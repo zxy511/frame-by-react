@@ -1,3 +1,1 @@
-# react-simple-o2o-demo
-
-React基础知识介绍，详情参考[这里](./docs/README.md)
+# 整理基于 react + router + redux + webpack 的前端开发框架
