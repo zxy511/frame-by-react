@@ -12,6 +12,10 @@ export default function userinfo(state = initialState, action) {
         case actionTypes.UPDATE_CITYNAME:
             return action.data
 
+        // 修改用户信息
+        case actionTypes.USERINFO_UPDATE:
+            return action.data
+
         default:
             return state
     }

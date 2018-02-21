@@ -27,10 +27,27 @@ export function postData() {
 		a: 100,
 		b: 200
 	})
+	// result.then(res => {
+	// 	return res.json()
+	// }).then(json => {
+	// 	console.log(json)
+	// })
 
-	result.then(res => {
-		console.log(res)
-	}).then(json => {
-		console.log(json)
-	})
+    result.then((response) => {
+        if (response.ok) {
+            return response.json()
+        } else {
+            console.log('服务器繁忙，请稍后再试；\r\nCode:' + response.status)
+        }
+    })
+    .then((response) => {
+        if (response && response.error_code === 0) {
+            console.log(response)//response.error_code 是与服务器端的约定，非0就是错误
+        } else {
+            console.log(response.message)//response.message也是与服务器端的约定，error_code !==0 就需要返回message
+        }
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
 }

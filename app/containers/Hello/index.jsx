@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Header from '../../components/Header'
 import Main from '../../components/Main'
@@ -34,7 +35,7 @@ class Hello extends React.Component {
     render() {
         return (
             <div className="app-page">
-                <Header title="hello页面"/>
+                <Header title="Header" cityName={this.props.userinfo.cityName}/>
                 <Main main={this.state.main} data={this.state.main.data} submitFn={this.submitFn.bind(this)}/>
                 <Footer footer={this.state.footer}/>
             </div>
@@ -63,4 +64,17 @@ class Hello extends React.Component {
     }
 }
 
-export default Hello
+function mapStateToProps(state) {
+    return {
+        userinfo:state.userinfo
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Hello)

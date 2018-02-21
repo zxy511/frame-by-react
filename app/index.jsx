@@ -9,6 +9,7 @@ import Hello from './containers/Hello'
 
 // 通用样式
 import './static/css/common.less'
+import './static/css/font.css'
 
 const store = configureStore()
 

@@ -1,25 +1,40 @@
 import React from 'react'
-import { Link, matchPath } from 'react-router-dom'
+import { HashRouter, Route, Link, Switch} from 'react-router-dom'
 
 class List extends React.Component {
     render() {
+
+        const Topic = ({ match }) => (
+            <h3>{match.params.topicId}</h3>
+        )
         return (
-        	<div>
-            	<p onClick={this.onClickHandle.bind(this)}>List</p>
-            	<p>
+        	<ul>
+            	<li onClick={this.onClickHandle.bind(this)}>List</li>
+            	<li>
             		{/*区别在于如果仅仅需要匹配路由,使用 Link 就可以了；
             		而 NavLink 的不同在于可以给当前选中的路由添加样式,如 activeStyle 和 activeClassName */}
             		{/*<NavLink exact to="/detail" activeStyle={{ color: '#4dc060' }}>to detail </NavLink>*/}
-            		<Link to="/list/detail">to detail</Link><br/>
-            		<Link to="/">to home</Link>
-            	</p>
-            </div>
+            		<Link to="/">home</Link>
+                </li>
+                <li>
+                    <Link to={`${this.props.match.url}/detail`}>detail</Link>
+                </li>
+                <li>
+                    <Link to={`${this.props.match.url}/type`}>type</Link>
+                </li>
+                <li>
+                    {/* NESTED ROUTES */}
+                    <Route path={`${this.props.match.url}/:topicId`} component={Topic}/>
+                    {/*<Route exact path={match.url} render={() => (
+                      <h3>Please select a topic.</h3>
+                    )}/>*/}
+            	</li>
+            </ul>
         )
     }
 
     onClickHandle() {
-    	debugger
-    	console.log(matchPath)
+    	console.log(this.props.match.url)
     }
 }
 
