@@ -1,15 +1,30 @@
-.category-point {
-	overflow: hidden;
-}
-.category-point>li {
-	width: 10px;
-	height: 10px;
+.carousel ul li{
+	width: 70px;
+	height: 70px;
+	margin: 5px 10px;
 
 	float: left;
-	margin: 0 5px;
 
-	border-radius: 50%;
+	list-style: none;
 	background-color: yellow;
+}
+
+.category-point {
+	overflow: hidden;
+	display: inline-block;
+}
+.category-point>li {
+	width: 15px;
+    height: 15px;
+    line-height: 15px;
+
+    float: left;
+
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: yellow;
+    list-style: none;
+    text-align: center;
 }
 .category-point>li.selected {
 	background-color: orange;

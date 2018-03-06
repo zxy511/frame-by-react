@@ -1,9 +1,9 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
-// import './style.less'
+import './style.less'
 
-class NotFound extends React.Component {
+class comments extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
@@ -12,7 +12,7 @@ class NotFound extends React.Component {
 
     render() {
         return (
-            <div>404 NotFound</div>
+            <div>{this.props.params.detailId}</div>
         )
     }
 
@@ -21,4 +21,4 @@ class NotFound extends React.Component {
     }
 }
 
-export default NotFound
+export default comments

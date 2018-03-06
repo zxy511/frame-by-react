@@ -76,5 +76,7 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    undefined,
+    {pure:false}
 )(Hello)

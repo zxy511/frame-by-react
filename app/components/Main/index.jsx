@@ -17,22 +17,22 @@ class Main extends React.Component {
         return (
             <div className="page-main">{this.props.main.desc}
 
+                <div>
+                    <input value={this.state.value} 
+                            onChange={this.InputOnChangeFn.bind(this)} 
+                            onKeyUp={this.InputOnKeyUpFn.bind(this)} />
+                    <ul>
+                        {this.props.data.map(function(item, index){
+                            return <li key={index}>{item.text}</li>
+                        })}
+                    </ul>
+                </div>
+                
                 {/*轮播图*/}
                 <Category/>
 
                 <Ad />
                 <List cityName={this.props.userinfo.cityName} />
-
-                <div>
-                	<input value={this.state.value} 
-                			onChange={this.InputOnChangeFn.bind(this)} 
-                			onKeyUp={this.InputOnKeyUpFn.bind(this)} />
-                	<ul>
-                		{this.props.data.map(function(item, index){
-                			return <li key={index}>{item.text}</li>
-                		})}
-                	</ul>
-                </div>
             </div>
         )
     }
@@ -62,5 +62,7 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    undefined,
+    {pure:false}
 )(Main)

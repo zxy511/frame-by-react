@@ -3,23 +3,31 @@ import React from 'react'
 import { HashRouter, Route, Link, Switch} from 'react-router-dom'
 
 import App from '../containers'
+
 import Hello from '../containers/Hello'
+
 import List from '../containers/List'
-// import Detail from '../containers/Detail'
+import City from '../containers/City'
+import Login from '../containers/Login'
+import User from '../containers/User'
+import Detail from '../containers/Detail'
 import NotFound from '../components/NotFound'
 
 class RouterMap extends React.Component {
-    updateHandle() {
-        console.log('router发生变化');
-    }
 
     render() {
         return (
             <HashRouter>
                 <App>　　
                     <Route exact path="/" component={Hello} />
-                    <Route path="/list" component={List} />
-                    {/*<Route path="/detail" component={Detail} />*/}
+                    <Route exact path="/city" component={City} />
+                    {/* :router? 加问号表示可选参数*/}
+                    <Route path="/login/:userpage?" component={Login} />
+                    <Route path="/user" component={User} />
+                    <Route exact path="/list" component={List} />
+                    <Route path="/detail/:detailId" component={Detail} />
+                    {/*<Route path="/detail/:id" component={Detail} />*/}
+                    
                     {/*<Route component={NotFound}/>*/}
                 </App>
             </HashRouter>

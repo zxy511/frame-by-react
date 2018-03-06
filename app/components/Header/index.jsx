@@ -17,17 +17,19 @@ class Header extends React.Component {
     render() {
         return (
             <div className="page-header clear-fix">
-                <div className="float-left">
+                <Link to='/city' className="float-left">
                     {this.props.cityName}
                     <i className="icon-angle-down"></i>
-                </div>
-                <div className="float-right"><i className="icon-user"></i></div>
+                </Link>
+                <Link to='/login/user' className="float-right">
+                    <i className="icon-user"></i>
+                </Link>
                 <div>
                     <i className="icon-search"></i>
-                    <input/>
+                    <input />
                 </div>
-                {/*<ul className="page-header">
-                	{this.props.title}
+                <Link to="/list">list</Link>
+                {/*<ul className="">
                 	<li>
                         <Link to="/list">list</Link>
                     </li>
@@ -36,7 +38,7 @@ class Header extends React.Component {
                             onChange={this.inputChangeHandle.bind(this, 'searchValue')} />
                         <p onClick={this.onClickHandle.bind(this)}>点击发送请求</p>
                     </li>
-                </ul>*/}
+                </ul> */}
             </div>
         )
     }

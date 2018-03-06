@@ -11,7 +11,7 @@ class Item extends React.Component {
     }
 
     render() {
-        let index = this.props.index
+        // let index = this.props.index
         let item = this.props.data
 
         return (

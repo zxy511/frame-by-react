@@ -9,7 +9,28 @@ class Category extends React.Component {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
         this.state = {
-            index: 0
+            index: 0,
+            datas:[
+                // {
+                //     type: '美食',
+                //     list: [
+                //         imgUrl: ' ',
+                //         link: ' '
+                //     ]
+                // },{
+                //     type: '娱乐',
+                //     list: [
+                //         imgUrl: ' ',
+                //         link: ' '
+                //     ]
+                // },{
+                //     type: '旅行',
+                //     list: [
+                //         imgUrl: ' ',
+                //         link: ' '
+                //     ]
+                // }
+            ]
         }
     }
 
@@ -19,7 +40,6 @@ class Category extends React.Component {
             auto: 5000,
             // continuous: false,
             callback: function(index) {
-                console.log(index)
                 this.setState({
                     index: index
                 })
@@ -27,9 +47,12 @@ class Category extends React.Component {
         }
         return (
             <div style={{backgroundColor: "pink"}}>
-                <ReactSwipe className="carousel" swipeOptions={opts}>
+                <ReactSwipe ref={reactSwipe => this.reactSwipe = reactSwipe} className="carousel" swipeOptions={opts}>
                     <div>
                         <ul>
+                            <li>美食</li>
+                            <li>美食</li>
+                            <li>美食</li>
                             <li>美食</li>
                             <li>美食</li>
                             <li>美食</li>
@@ -44,10 +67,16 @@ class Category extends React.Component {
                             <li>娱乐</li>
                             <li>娱乐</li>
                             <li>娱乐</li>
+                            <li>娱乐</li>
+                            <li>娱乐</li>
+                            <li>娱乐</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
+                            <li>旅行</li>
+                            <li>旅行</li>
+                            <li>旅行</li>
                             <li>旅行</li>
                             <li>旅行</li>
                             <li>旅行</li>
@@ -56,14 +85,28 @@ class Category extends React.Component {
                         </ul>
                     </div>
                 </ReactSwipe>
-                <ul className="category-point">
-                    {/*当前图片index为{this.state.index}*/}
-                    <li className={this.state.index === 0 ? "selected" : ""}>1</li>
-                    <li className={this.state.index === 1 ? "selected" : ""}>2</li>
-                    <li className={this.state.index === 2 ? "selected" : ""}>3</li>
-                </ul>
+                <div style={{textAlign : 'center'}} >
+                    <div style={{display: 'inline'}}>
+                        <ul className="category-point">
+                            {/*当前图片index为{this.state.index}*/}
+                            <li className={this.state.index === 0 ? "selected" : ""} onClick={this.pointHandle.bind(this, 0)}>1</li>
+                            <li className={this.state.index === 1 ? "selected" : ""} onClick={this.pointHandle.bind(this, 1)}>2</li>
+                            <li className={this.state.index === 2 ? "selected" : ""} onClick={this.pointHandle.bind(this, 2)}>3</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
+    }
+
+    pointHandle(index, e) {
+        // 调用react-swipe组件方法
+        // https://github.com/voronianski/swipe-js-iso#config-options
+        this.reactSwipe.slide(index);
+        // 修改当前index值
+        this.setState({
+            index: index
+        })
     }
 
     componentDidMount() {
